@@ -1,1 +1,62 @@
 requests==2.31.0
+# --- Django Core ---
+Django==4.2.2
+asgiref==3.7.2
+sqlparse==0.4.4
+
+reportlab==4.4.10
+Pillow==10.3.0
+resend==2.29.0
+
+# --- Environment Vars ---
+django-environ==0.11.2
+
+# --- REST Framework ---
+djangorestframework==3.14.0
+django-filter==24.2
+
+# --- JWT (Autenticación) ---
+djangorestframework-simplejwt==5.3.1
+PyJWT==2.8.0
+
+# --- API Documentation ---
+drf-spectacular==0.27.2
+
+# --- Seguridad y CORS ---
+django-cors-headers==4.4.0
+cryptography==42.0.8
+
+# --- Usuarios y Autenticación extra ---
+djoser==2.2.3
+social-auth-app-django==5.4.1
+social-auth-core==4.5.4
+python3-openid==3.2.0
+oauthlib==3.2.2
+requests-oauthlib==2.0.0
+
+# --- DB & ORM ---
+psycopg2-binary==2.9.7
+dj-database-url==2.1.0
+django-multiselectfield==0.1.12
+
+# --- Emails ---
+django-templated-mail==1.1.1
+
+# --- Desarrollo & Utilidades ---
+django-extensions==3.2.3
+flake8==6.1.0
+pyflakes==3.1.0
+pycodestyle==2.11.1
+coverage==6.4.3
+
+# --- Otros ---
+python-dotenv==1.0.0
+certifi==2024.6.2
+charset-normalizer==3.3.2
+idna==3.7
+urllib3==2.2.2
+requests==2.32.3
+
+# --- Producción ---
+whitenoise==5.2.0
+gunicorn==21.2.0
