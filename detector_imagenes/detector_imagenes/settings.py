@@ -79,8 +79,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'detector_imagenes.wsgi.application'
 
-CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', '').split(',')
-CORS_ALLOW_CREDENTIALS = True
+#CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', '').split(',')
+#CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

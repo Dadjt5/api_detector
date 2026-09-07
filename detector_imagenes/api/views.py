@@ -1,5 +1,7 @@
 import base64
+import json
 import os
+import re
 import requests
 
 from dotenv import load_dotenv
@@ -22,11 +24,8 @@ class AnalizarImagenView(APIView):
             )
 
         try:
-            # Leer la imagen
-            imagen_bytes = imagen.read()
-
-            # Convertir imagen a Base64
-            base64_image = base64.b64encode(imagen_bytes).decode("utf-8")
+            image_bytes = imagen.read()
+            image_b64 = base64.b64encode(image_bytes).decode('utf-8')
 
             account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
             auth_token = os.getenv("CLOUDFLARE_AUTH_TOKEN")
@@ -41,23 +40,57 @@ class AnalizarImagenView(APIView):
             url = (
                 f"https://api.cloudflare.com/client/v4/accounts/"
                 f"{account_id}/ai/run/"
-                f"@cf/meta/llama-3.2-11b-vision-instruct"
+                f"@cf/meta/llama-4-scout-17b-16e-instruct"
             )
 
             # Prompt para el modelo
             prompt = """
-Identifica el elemento principal de esta imagen.
+Analiza la imagen con mucho cuidado.
 
-Responde únicamente con JSON válido usando exactamente este formato:
+Primero determina qué tipo de elemento aparece:
+animal, planta, persona, objeto, vehículo, edificio, paisaje, etc.
+
+Si es un animal, determina primero si es un ave, mamífero,
+reptil, anfibio, pez, insecto u otro.
+
+Después intenta identificar la especie.
+
+IMPORTANTE:
+- No asumas que es un gato, perro u otro animal común.
+- No inventes una especie.
+- Si no puedes identificarlo con suficiente seguridad,
+  indica una identificación más general.
+- La confianza debe reflejar realmente la calidad de la evidencia visual.
+
+Devuelve UNICAMENTE el objeto JSON puro, sin bloques de código Markdown (```json) ni explicaciones adicionales:
 
 {
-    "name": "nombre del elemento",
-    "category": "animal, planta, objeto, lugar, alimento u otra categoría",
-    "confidence": 0
+  "name": "nombre común",
+  "scientific_name": "nombre científico",
+  "category": "categoría",
+  "confidence": 0
 }
-
-confidence debe ser un número entre 0 y 100.
 """
+
+            payload = {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text", 
+                                "text": prompt
+                            },
+                            {
+                                "type": "image_url", 
+                                "image_url": {
+                                    "url": f"data:image/jpeg;base64,{image_b64}"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
 
             # Petición a Cloudflare
             response = requests.post(
@@ -66,14 +99,10 @@ confidence debe ser un número entre 0 y 100.
                     "Authorization": f"Bearer {auth_token}",
                     "Content-Type": "application/json"
                 },
-                json={
-                    "prompt": prompt,
-                    "image": base64_image
-                },
+                json=payload,
                 timeout=60
             )
 
-            # Si Cloudflare devuelve error
             if not response.ok:
                 return Response(
                     {
@@ -84,9 +113,21 @@ confidence debe ser un número entre 0 y 100.
                 )
 
             datos = response.json()
+            
+            resultado_ai = datos.get("result", {})
+            
+            texto_ia = resultado_ai.get("response") or resultado_ai.get("text") or ""
 
-            # De momento devolvemos la respuesta de Cloudflare
-            return Response({"resultado": datos})
+            if isinstance(texto_ia, dict):
+                resultado_json = texto_ia
+            else:
+                texto_limpio = re.sub(r"```json\s*|```", "", str(texto_ia)).strip()
+                try:
+                    resultado_json = json.loads(texto_limpio)
+                except json.JSONDecodeError:
+                    resultado_json = {"resultado_texto": texto_limpio}
+
+            return Response({"resultado": resultado_json})
 
         except Exception as e:
             return Response(
