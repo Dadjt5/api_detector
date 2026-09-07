@@ -1,4 +1,3 @@
-requests==2.31.0
 # --- Django Core ---
 Django==4.2.2
 asgiref==3.7.2
