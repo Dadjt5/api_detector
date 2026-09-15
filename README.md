@@ -1,20 +1,20 @@
-# TFG_Polideportivo
+# API Enciclopedia
 
-Aplicación web desarrollada como portfolio de Woaida Interactive, dedicada a mostrar los diferentes juegos y aplicaciones Android desarrollados por el estudio.
+API REST desarrollada con **Django** como backend para una aplicación Android de reconocimiento y catalogación mediante fotografías.
 
-El proyecto está compuesto por un frontend y un backend, que se comunican mediante una API para obtener y mostrar dinámicamente la información de los diferentes proyectos.
+El proyecto nace como backend para una aplicación inicialmente orientada al reconocimiento de animales. Sin embargo, la arquitectura está planteada con una visión más amplia, permitiendo incorporar en el futuro diferentes tipos de elementos y objetos.
 
-## Demo
+Actualmente, la API se encuentra en fase de desarrollo y cuenta con la estructura inicial del backend y una base de datos PostgreSQL alojada en **Neon**.
 
-**Aplicación en producción:** https://woaida.onrender.com
+## Estado del proyecto
+
+**En desarrollo**
+
+La API se encuentra actualmente en una fase inicial de desarrollo. La estructura del proyecto y la conexión con la base de datos están preparadas, mientras que las funcionalidades y endpoints se irán implementando progresivamente.
+
+Ahora mismo solo esta pensada para el análisis de animales pero se busca que sea mas general.
 
 ## Tecnologías
-
-**Frontend-React**
-
-* React
-* JavaScript
-* HTML / CSS
 
 **Backend**
 
@@ -27,51 +27,59 @@ El proyecto está compuesto por un frontend y un backend, que se comunican media
 * PostgreSQL
 * Neon
 
-**Deployment**
+**Cliente**
 
-* Render
-
-## Funcionalidades
-
-* Mostrar las diferentes aplicaciones y juegos desarrolladas
-* Comunicación entre frontend y backend mediante API REST
-* Persistencia de datos mediante PostgreSQL
-* Despliegue de la aplicación en producción
+* Android (Java)
 
 ## Arquitectura
 
 ```text
-┌──────────────────┐
-│   React          │
-│    Frontend      │
-└────────┬─────────┘
-         │
-      REST API
-         │
-┌────────▼─────────┐
-│ Django + DRF     │
-│     Backend      │
-└────────┬─────────┘
-         │
-┌────────▼─────────┐
-│   PostgreSQL     │
-│      Neon        │
-└──────────────────┘
+┌──────────────────────┐
+│  Aplicación Android  │
+│        Java          │
+└──────────┬───────────┘
+           │
+        HTTP / JSON
+           │
+┌──────────▼───────────┐
+│        Django        │
+│      REST API        │
+└──────────┬───────────┘
+           │
+┌──────────▼───────────┐
+│      PostgreSQL      │
+│        Neon          │
+└──────────────────────┘
 ```
 
-## Estructura del proyecto
+## Concepto
 
-```text
-WoAiDa-Interactive/
-├── frontend-react/
-├── backend/
-└── README.md
-```
+La API servirá como backend para una enciclopedia digital generada a partir de los elementos reconocidos por la aplicación Android.
 
-## Sobre el proyecto
+La primera implementación estará centrada en **animales**, permitiendo almacenar y consultar la información obtenida durante el proceso de reconocimiento.
 
-Este proyecto fue desarrollado para dar un rápido y cómodo acceso a todas las aplicaciones desarrolladas, aplicando conocimientos de desarrollo web full-stack, diseño de APIs REST y despliegue de aplicaciones.
+A largo plazo, el objetivo es evolucionar hacia un sistema de reconocimiento más general, capaz de trabajar con diferentes categorías de elementos y objetos.
 
-## Autor
+## Evolución futura
+
+El proyecto está planteado para crecer progresivamente mediante nuevas funcionalidades, entre ellas:
+
+* Implementación de los primeros endpoints REST
+* Gestión de animales identificados
+* Consulta y organización de la enciclopedia
+* Incorporación de nuevas categorías
+* Reconocimiento de otros tipos de elementos y objetos
+* Integración con nuevos modelos de inteligencia artificial
+
+## Propósito
+
+El objetivo de esta API es proporcionar una base backend escalable para la aplicación de reconocimiento visual y su enciclopedia.
+
+
+El proyecto permite poner en práctica el desarrollo de **APIs REST con Django, comunicación entre un cliente Android y un servidor y comunicación con un agente de IA**, dejando preparada la infraestructura para futuras funcionalidades de reconocimiento y catalogación.
+
+## Desarrollador
 
 Desarrollado por **David Juzgado Torell**.
+
+🔗 [LinkedIn](AÑADIR_URL) · 🔗 [Portfolio](AÑADIR_URL)
