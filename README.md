@@ -81,5 +81,3 @@ El proyecto permite poner en práctica el desarrollo de **APIs REST con Django, 
 ## Desarrollador
 
 Desarrollado por **David Juzgado Torell**.
-
-🔗 [LinkedIn](AÑADIR_URL) · 🔗 [Portfolio](AÑADIR_URL)
