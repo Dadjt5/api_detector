@@ -47,16 +47,21 @@ class AnalizarImagenView(APIView):
             prompt = """
 Analiza la imagen con mucho cuidado.
 
-Primero determina qué tipo de elemento aparece:
-animal, planta, persona, objeto, vehículo, edificio, paisaje, etc.
+Primero determina qué tipo de elemento aparece de entre estos:
+animal, planta, persona, mineral u otro.
 
 Si es un animal, determina primero si es un ave, mamífero,
-reptil, anfibio, pez, insecto u otro.
+reptil, anfibio, pez, insecto u otro, esta será la categoria.
 
 Después intenta identificar la especie.
 
+Si es una planta en categoria debes poner el tiempo medio de vida.
+
+Si es un mineral en categoria debes poner la dureza.
+
+Si es una persona en categoria debes poner su edad aproximada.
+
 IMPORTANTE:
-- No asumas que es un gato, perro u otro animal común.
 - No inventes una especie.
 - Si no puedes identificarlo con suficiente seguridad,
   indica una identificación más general.
@@ -65,6 +70,7 @@ IMPORTANTE:
 Devuelve UNICAMENTE el objeto JSON puro, sin bloques de código Markdown (```json) ni explicaciones adicionales:
 
 {
+  "tipo": "tipo de entre los especificados (planta, animal, persona, mineral u otro)",
   "name": "nombre común",
   "scientific_name": "nombre científico",
   "category": "categoría",
