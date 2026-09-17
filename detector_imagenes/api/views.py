@@ -74,6 +74,7 @@ Devuelve UNICAMENTE el objeto JSON puro, sin bloques de código Markdown (```jso
   "name": "nombre común",
   "scientific_name": "nombre científico",
   "category": "categoría",
+  "descripcion": "breve descripción real sobre el elemento de la imagen",
   "confidence": 0
 }
 """
