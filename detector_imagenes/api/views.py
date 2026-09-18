@@ -48,18 +48,12 @@ class AnalizarImagenView(APIView):
 Analiza la imagen con mucho cuidado.
 
 Primero determina qué tipo de elemento aparece de entre estos:
-animal, planta, persona, mineral u otro.
+animal, planta, mineral u otro.
 
-Si es un animal, determina primero si es un ave, mamífero,
-reptil, anfibio, pez, insecto u otro, esta será la categoria.
+Determina primero la categoria, esto va a ser su clase, por ejemplo los animales pueden ser ave, mamifero, insecto, pez, etc.
+Las plantas pueden ser planta herbácea, y los minealres igual, pueden ser silicatos, sulfuros, oxidos, etc.
 
 Después intenta identificar la especie.
-
-Si es una planta en categoria debes poner el tiempo medio de vida.
-
-Si es un mineral en categoria debes poner la dureza.
-
-Si es una persona en categoria debes poner su edad aproximada.
 
 IMPORTANTE:
 - No inventes una especie.
@@ -67,16 +61,23 @@ IMPORTANTE:
   indica una identificación más general.
 - La confianza debe reflejar realmente la calidad de la evidencia visual.
 
+Finalmente en el caso de animales y plantas indica su habitat y si es venenoso o no. En el caso de los minerales estos campos dejalos vacios e indica la dureza aproximada.
+
 Devuelve UNICAMENTE el objeto JSON puro, sin bloques de código Markdown (```json) ni explicaciones adicionales:
 
 {
-  "tipo": "tipo de entre los especificados (planta, animal, persona, mineral u otro)",
-  "name": "nombre común",
-  "scientific_name": "nombre científico",
-  "category": "categoría",
-  "descripcion": "breve descripción real sobre el elemento de la imagen",
+  "tipo": "Tipo de entre los especificados (planta, animal, persona, mineral u otro)",
+  "name": "Nombre común",
+  "scientific_name": "Nombre científico",
+  "descripcion": "Breve descripción real sobre el elemento",
+  "category": "Categoría",
+  "habitat": "Habitat o habitats",
+  "venenoso": "Responde solo si o no",
+  "dureza": "Solo para la dureza de los minerales",
   "confidence": 0
 }
+
+Recuerda que las palabras y oraciones comienzan con mayuscula, pero no las etiquetas, esas tal cual estan.
 """
 
             payload = {
