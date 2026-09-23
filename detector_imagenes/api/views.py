@@ -45,39 +45,269 @@ class AnalizarImagenView(APIView):
 
             # Prompt para el modelo
             prompt = """
-Analiza la imagen con mucho cuidado.
-
-Primero determina qué tipo de elemento aparece de entre estos:
-animal, planta, mineral u otro.
-
-Determina primero la categoria, esto va a ser su clase, por ejemplo los animales pueden ser ave, mamifero, insecto, pez, etc.
-Las plantas pueden ser planta herbácea, y los minealres igual, pueden ser silicatos, sulfuros, oxidos, etc.
-
-Después intenta identificar la especie.
+prompt = """
+Tu tarea es analizar la imagen, identificar el elemento principal y generar una ficha
+de enciclopedia basada en una identificación visual lo más fiable posible.
 
 IMPORTANTE:
-- No inventes una especie.
-- Si no puedes identificarlo con suficiente seguridad,
-  indica una identificación más general.
-- La confianza debe reflejar realmente la calidad de la evidencia visual.
+La identificación debe basarse principalmente en las características visibles de la imagen.
+La información adicional de la ficha puede utilizar conocimiento general fiable sobre el
+elemento identificado.
 
-Finalmente en el caso de animales y plantas indica su habitat y si es venenoso o no. En el caso de los minerales estos campos dejalos vacios e indica la dureza aproximada.
+No inventes identificaciones ni datos. Cuando no exista suficiente información, utiliza
+una identificación más general o deja el campo vacío.
 
-Devuelve UNICAMENTE el objeto JSON puro, sin bloques de código Markdown (```json) ni explicaciones adicionales:
+========================
+1. TIPO
+========================
+
+Determina qué aparece principalmente en la imagen.
+
+El campo "tipo" SOLO puede contener uno de estos valores:
+
+- animal
+- planta
+- mineral
+- otro
+
+Si el elemento no puede clasificarse claramente como animal, planta o mineral, utiliza "otro".
+
+No utilices otros valores para "tipo".
+
+========================
+2. CATEGORÍA
+========================
+
+Determina el grupo o categoría general al que pertenece el elemento.
+
+Ejemplos:
+
+Animales:
+- Mamífero
+- Ave
+- Reptil
+- Anfibio
+- Pez
+- Insecto
+- Arácnido
+- Molusco
+- Crustáceo
+
+Plantas:
+- Árbol
+- Arbusto
+- Planta herbácea
+- Helecho
+- Musgo
+- Planta acuática
+
+Minerales:
+- Silicato
+- Sulfuro
+- Óxido
+- Carbonato
+- Haluro
+- Elemento nativo
+
+Estas categorías son solo ejemplos. Puedes utilizar otra categoría cuando sea
+más apropiada para el elemento identificado.
+
+La categoría debe ser coherente con el "tipo".
+
+Si no existe suficiente información para determinar una categoría concreta,
+utiliza una categoría más general.
+
+========================
+3. IDENTIFICACIÓN
+========================
+
+Intenta identificar el elemento hasta el nivel más específico que permita la evidencia.
+
+No estás obligado a identificar una especie.
+
+Utiliza el nivel de identificación que realmente puedas justificar:
+
+- especie
+- género
+- familia
+- grupo
+- categoría general
+
+Si no puedes determinar la especie con suficiente seguridad, NO inventes una especie
+para completar el campo.
+
+Ejemplo:
+
+Si la imagen permite identificar claramente un zorro pero no permite determinar
+la especie exacta, utiliza:
+
+"name": "Zorro"
+
+y no inventes una especie concreta.
+
+El campo "scientific_name" debe corresponder exactamente al nivel de identificación.
+
+Si identificas una especie, utiliza el nombre científico de esa especie.
+
+Si identificas únicamente un género, utiliza el nombre científico del género.
+
+Si no puedes proporcionar un nombre científico fiable, deja "scientific_name" vacío.
+
+El nombre común y el nombre científico deben referirse al mismo organismo o elemento.
+
+========================
+4. INFORMACIÓN
+========================
+
+Genera información breve, factual y útil para una enciclopedia.
+
+La información adicional NO tiene que aparecer visualmente en la imagen.
+Una vez realizada una identificación suficientemente fiable, puedes utilizar conocimiento
+general sobre el elemento identificado.
+
+No inventes datos.
+
+Si un dato no puede determinarse de forma fiable a partir de la identificación,
+deja ese campo vacío.
+
+ANIMALES:
+
+"habitat":
+Indica el hábitat habitual del animal identificado.
+
+"venenoso":
+Utiliza únicamente:
+- "si"
+- "no"
+- ""
+
+Utiliza "si" únicamente cuando el animal sea conocido por producir veneno o toxinas.
+No confundas "venenoso" con "peligroso", "agresivo" o "mordedor".
+
+PLANTAS:
+
+"habitat":
+Indica el hábitat habitual de la planta identificada.
+
+"venenoso":
+Utiliza únicamente:
+- "si"
+- "no"
+- ""
+
+Utiliza "si" cuando la planta sea conocida por presentar toxicidad relevante.
+No confundas toxicidad con que la planta sea simplemente no comestible.
+
+MINERALES:
+
+"habitat":
+Indica donde se suele encontrar el mineral identificado.
+
+"venenoso":
+Déjalo vacío.
+
+"dureza":
+Indica la dureza aproximada en la escala de Mohs del mineral identificado.
+
+Si no puedes determinarla de forma fiable, deja el campo vacío.
+
+OTROS:
+
+Si "tipo" es "otro", proporciona únicamente información que sea relevante y fiable
+para el elemento identificado.
+
+========================
+5. DESCRIPCIÓN
+========================
+
+"descripcion" debe ser una descripción breve, factual y útil para una enciclopedia.
+
+Debe describir qué es el elemento y sus características principales.
+
+No menciones la imagen, la cámara, la fotografía ni el proceso de identificación.
+
+No incluyas información especulativa.
+
+========================
+6. CONFIANZA
+========================
+
+"confidence" representa exclusivamente la confianza en la IDENTIFICACIÓN VISUAL.
+
+Debe ser un número entero entre 0 y 100.
+
+Orientación:
+
+90-100:
+Identificación muy clara. Existen características visuales distintivas suficientes.
+
+70-89:
+Identificación bastante probable, aunque existen algunas alternativas.
+
+40-69:
+Identificación posible, pero existen dudas importantes.
+
+1-39:
+La identificación es muy incierta.
+
+0:
+No existe información suficiente para realizar una identificación útil.
+
+Reduce la confianza cuando:
+- la imagen está borrosa
+- el elemento aparece parcialmente
+- hay poca iluminación
+- el elemento es demasiado pequeño
+- faltan características distintivas
+- existen varias especies visualmente similares
+- la imagen no permite distinguir entre categorías cercanas
+
+IMPORTANTE:
+Una confianza alta NO significa que la especie sea visualmente parecida.
+Debe existir evidencia visual suficiente para justificarla.
+
+========================
+7. REGLAS DE CONSISTENCIA
+========================
+
+- "tipo" debe ser exactamente: animal, planta, mineral u otro.
+- "category" debe ser coherente con "tipo".
+- "name" y "scientific_name" deben referirse al mismo elemento.
+- No inventes especies.
+- No inventes nombres científicos.
+- No inventes características.
+- Si no puedes determinar un dato de forma fiable, utiliza "".
+- "confidence" debe ser siempre un número entero entre 0 y 100.
+- "venenoso" solo puede ser "si", "no" o "".
+- "dureza" solo debe utilizarse para minerales.
+- "habitat" debe quedar vacío para minerales.
+- Mantén exactamente las etiquetas JSON indicadas a continuación.
+
+========================
+8. FORMATO DE RESPUESTA
+========================
+
+Devuelve ÚNICAMENTE JSON válido.
+
+No utilices bloques Markdown.
+No añadas explicaciones antes o después del JSON.
+No añadas comentarios.
+No añadas propiedades adicionales.
+No cambies los nombres de las propiedades.
+
+Formato obligatorio:
 
 {
-  "tipo": "Tipo de entre los especificados (planta, animal, persona, mineral u otro)",
+  "tipo": "animal",
   "name": "Nombre común",
   "scientific_name": "Nombre científico",
-  "descripcion": "Breve descripción real sobre el elemento",
+  "descripcion": "Breve descripción factual",
   "category": "Categoría",
-  "habitat": "Habitat o habitats",
-  "venenoso": "Responde solo si o no",
-  "dureza": "Solo para la dureza de los minerales",
+  "habitat": "Hábitat",
+  "venenoso": "si",
+  "dureza": "",
   "confidence": 0
 }
-
-Recuerda que las palabras y oraciones comienzan con mayuscula, pero no las etiquetas, esas tal cual estan.
 """
 
             payload = {
