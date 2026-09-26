@@ -21,9 +21,10 @@ El campo "tipo" SOLO puede contener uno de estos valores:
 - animal
 - planta
 - mineral
+- receta
 - otro
 
-Si el elemento no puede clasificarse claramente como animal, planta o mineral, utiliza "otro".
+Si el elemento no puede clasificarse claramente como animal, planta, mineral o receta, utiliza "otro".
 
 No utilices otros valores para "tipo".
 
@@ -54,6 +55,8 @@ la especie exacta, utiliza:
 "name": "Zorro"
 
 y no inventes una especie concreta.
+
+En el caso de los platos de comida basta con que pongas el nombre de la receta.
 
 ========================
 3. CONFIANZA
@@ -86,8 +89,6 @@ Reduce la confianza cuando:
 - hay poca iluminación
 - el elemento es demasiado pequeño
 - faltan características distintivas
-- existen varias especies visualmente similares
-- la imagen no permite distinguir entre categorías cercanas
 
 IMPORTANTE:
 Una confianza alta NO significa que la especie sea visualmente parecida.
@@ -97,9 +98,9 @@ Debe existir evidencia visual suficiente para justificarla.
 4. REGLAS DE CONSISTENCIA
 ========================
 
-- "tipo" debe ser exactamente: animal, planta, mineral u otro.
+- "tipo" debe ser exactamente: animal, planta, mineral, receta u otro.
 - "name" deben referirse al mismo elemento.
-- No inventes especies.
+- No inventes especies o nombres de recetas.
 - Si no puedes determinar un dato de forma fiable, utiliza "".
 - "confidence" debe ser siempre un número entero entre 0 y 100.
 - Mantén exactamente las etiquetas JSON indicadas a continuación.
