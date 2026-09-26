@@ -1,4 +1,4 @@
-from services.identificacion import analizar_imagen_completa
+from services.identificacion import analizar_imagen_completa, 
 from dotenv import load_dotenv
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,9 +9,7 @@ load_dotenv()
 
 
 class AnalizarImagenView(APIView):
-
     def post(self, request):
-
         imagen = request.FILES.get("imagen")
 
         if not imagen:
@@ -21,7 +19,29 @@ class AnalizarImagenView(APIView):
             )
 
         try:
-            resultado = analizar_imagen_completa(imagen)
+            resultado = analizar_imagen_completa(imagen=imagen)
+
+            return Response(resultado, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+class ObtenerInformacion(APIView):
+    def post(self, request):
+        nombre = request.get("nombre")
+        tipo = request.get("tipo")
+
+        if not nombre or not tipo:
+            return Response(
+                {"error": "No se ha enviado ningun nombre o tipo"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            resultado = analizar_imagen_completa(nombre=nombre, tipo=tipo)
 
             return Response(resultado, status=status.HTTP_200_OK)
 
