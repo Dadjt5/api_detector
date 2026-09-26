@@ -45,6 +45,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido:
   "name": "Nombre común",
   "scientific_name": "Nombre científico",
   "descripcion": "descripción breve del mineral",
+  "category": "Categoría",
   "grupo": "",
   "dureza": "",
   "color": "",
