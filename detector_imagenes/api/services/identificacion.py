@@ -23,7 +23,7 @@ def analizar_imagen_completa(imagen=None, tipo=None, nombre=None):
     else:
         informacion = {}
 
-    return {**identificacion, "informacion": informacion}
+    return informacion
 
 
 def analizar_animal(identificacion=None, nombre=None, confianza=None):
