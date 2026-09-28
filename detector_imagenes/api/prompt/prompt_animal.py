@@ -40,12 +40,13 @@ más apropiada para el elemento identificado.
 Si no existe suficiente información para determinar una categoría concreta,
 utiliza una categoría más general.
 
-
+El campo tipo debe ser siempre animal.
 
 Devuelve ÚNICAMENTE un objeto JSON válido:
 
 {{
     "name": "Nombre común",
+    "tipo": "animal",
     "scientific_name": "Nombre científico",
     "descripcion": "Breve descripción factual",
     "category": "Categoría",
