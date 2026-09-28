@@ -66,7 +66,7 @@ Indicaciones:
 - "floracion": información sobre su floración, si corresponde.
 - "reproduccion": forma principal de reproducción.
 - "usos": usos conocidos, por ejemplo ornamentales, alimentarios, medicinales o industriales.
-- "estado_conservacion": estado de conservación conocido. Si no existe información fiable, deja el campo vacío.
+- "estado_conservacion": estado de conservación conocido de la planta en cuestion.
 - "dato_interesante": un dato curioso o relevante sobre la planta.
 
 Si un dato no puede determinarse de forma fiable,
