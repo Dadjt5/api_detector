@@ -149,6 +149,7 @@ def obtener_informacion(prompt):
             resultado_json = texto_ia
         else:
             texto_limpio = re.sub(r"```json\s*|```", "", str(texto_ia)).strip()
+            print(texto_limpio)
             try:
                 resultado_json = json.loads(texto_limpio)
             except json.JSONDecodeError:
