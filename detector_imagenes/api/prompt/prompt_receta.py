@@ -20,11 +20,15 @@ indicado en "numero_personas".
 
 Devuelve ÚNICAMENTE un objeto JSON válido.
 
-No utilices Markdown.
-No añadas explicaciones antes o después del JSON.
-No añadas propiedades adicionales.
-No cambies los nombres de las propiedades.
 El campo tipo debe ser siempre receta.
+
+IMPORTANTE:
+- Devuelve ÚNICAMENTE el objeto JSON.
+- NO escribas ninguna explicación antes del JSON.
+- NO escribas ninguna explicación después del JSON.
+- NO utilices frases como "Aquí tienes..." o "Aquí te dejo...".
+- La respuesta debe comenzar directamente con `{`.
+- La respuesta debe terminar directamente con `}`.
 
 Formato obligatorio:
 
