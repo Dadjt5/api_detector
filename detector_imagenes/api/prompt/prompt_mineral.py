@@ -37,12 +37,13 @@ más apropiada para el elemento identificado.
 Si no existe suficiente información para determinar una categoría concreta,
 utiliza una categoría más general.
 
-
+El campo tipo debe ser siempre mineral.
 
 Devuelve ÚNICAMENTE un objeto JSON válido:
 
 {{
   "name": "Nombre común",
+  "tipo": "mineral",
   "scientific_name": "Nombre científico",
   "descripcion": "descripción breve del mineral",
   "category": "Categoría",
