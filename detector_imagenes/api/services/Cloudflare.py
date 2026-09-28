@@ -44,7 +44,8 @@ def identificar_imagen(imagen, prompt):
                     }
                     ]
                 }
-                ]
+                ],
+                "max_tokens": 500
             }
             
         # Petición a Cloudflare
@@ -114,7 +115,8 @@ def obtener_informacion(prompt):
                     },
                     ]
                 }
-                ]
+                ],
+                "max_tokens": 500
             }
 
         # Petición a Cloudflare
