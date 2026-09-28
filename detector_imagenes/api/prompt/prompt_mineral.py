@@ -80,8 +80,6 @@ IMPORTANTE:
 - NO escribas ninguna explicación antes del JSON.
 - NO escribas ninguna explicación después del JSON.
 - NO utilices frases como "Aquí tienes..." o "Aquí te dejo...".
-- La respuesta debe comenzar directamente con `{`.
-- La respuesta debe terminar directamente con `}`.
 
 No añadas propiedades adicionales.
 """
