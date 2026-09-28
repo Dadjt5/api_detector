@@ -146,6 +146,9 @@ def obtener_informacion(prompt):
         if isinstance(texto_ia, dict):
             resultado_json = texto_ia
         else:
+            print("========== TEXTO IA EN CLOUDFLARE.PY ==========")
+            print(texto_limpio)
+            print("================================")
             texto_limpio = re.sub(r"```json\s*|```", "", str(texto_ia)).strip()
             try:
                 resultado_json = json.loads(texto_limpio)
