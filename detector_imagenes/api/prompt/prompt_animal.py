@@ -44,7 +44,7 @@ utiliza una categoría más general.
 
 Devuelve ÚNICAMENTE un objeto JSON válido:
 
-{
+{{
     "name": "Nombre común",
     "scientific_name": "Nombre científico",
     "descripcion": "Breve descripción factual",
@@ -59,7 +59,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido:
     "reproduccion": "",
     "estado_conservacion": "",
     "dato_interesante": ""
-}
+}}
 
 Si un dato no puede determinarse de forma fiable,
 deja el campo vacío pero incluyelo en el JSON a pesar de estar vacio.
