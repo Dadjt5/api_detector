@@ -4,8 +4,6 @@ import os
 import re
 import requests
 
-
-
 from dotenv import load_dotenv
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -48,14 +46,6 @@ def identificar_imagen(imagen, prompt):
                 }
                 ]
             }
-
-        print("========== DEBUG ==========")
-        print("prompt ->", type(prompt))
-        print("image_b64 ->", type(image_b64))
-        print("payload ->", type(payload))
-
-        print("prompt valor ->", repr(prompt)[:200])
-        print("===========================")
             
         # Petición a Cloudflare
         response = requests.post(
