@@ -27,20 +27,20 @@ No cambies los nombres de las propiedades.
 
 Formato obligatorio:
 
-{
+{{
     "name": "Nombre de la receta",
     "numero_personas": 0,
     "ingredientes": [
-        {
+        {{
             "nombre": "Nombre del ingrediente",
             "cantidad": "Cantidad necesaria"
-        }
+        }}
     ],
     "pasos": [
         "Primer paso de la receta",
         "Segundo paso de la receta"
     ]
-}
+}}
 
 INDICACIONES:
 
