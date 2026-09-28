@@ -1,4 +1,4 @@
-from identificacion import analizar_imagen_completa
+from .services.identificacion import analizar_imagen_completa
 from dotenv import load_dotenv
 from rest_framework.views import APIView
 from rest_framework.response import Response
