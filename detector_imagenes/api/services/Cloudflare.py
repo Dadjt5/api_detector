@@ -61,7 +61,14 @@ def identificar_imagen(imagen, prompt):
         )
             
         if not response.ok:
-            raise Exception("Error de Cloudflare")
+            print("========== ERROR CLOUDFLARE ==========")
+            print("Status:", response.status_code)
+            print("Respuesta:", response.text)
+            print("======================================")
+    
+    raise Exception(
+        f"Cloudflare respondió {response.status_code}: {response.text}"
+    )
             
         datos = response.json()
                    
@@ -124,7 +131,10 @@ def obtener_informacion(prompt):
         )
             
         if not response.ok:
-            raise Exception("Error de Cloudflare")
+            print("========== ERROR CLOUDFLARE ==========")
+            print("Status:", response.status_code)
+            print("Respuesta:", response.text)
+            print("======================================")
             
         datos = response.json()
                    
