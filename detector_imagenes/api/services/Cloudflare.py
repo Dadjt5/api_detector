@@ -48,6 +48,14 @@ def identificar_imagen(imagen, prompt):
                 }
                 ]
             }
+
+        print("========== DEBUG ==========")
+        print("prompt ->", type(prompt))
+        print("image_b64 ->", type(image_b64))
+        print("payload ->", type(payload))
+
+        print("prompt valor ->", repr(prompt)[:200])
+        print("===========================")
             
         # Petición a Cloudflare
         response = requests.post(
