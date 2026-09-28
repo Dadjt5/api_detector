@@ -1,5 +1,9 @@
 from .Cloudflare import identificar_imagen, obtener_informacion
-from ..prompt import prompt_analisis, prompt_animal, prompt_planta, prompt_mineral, prompt_receta
+from ..prompt.prompt_analisis import prompt_analisis
+from ..prompt.prompt_animal import prompt_animal
+from ..prompt.prompt_planta import prompt_planta
+from ..prompt.prompt_mineral import prompt_mineral
+from ..prompt.prompt_receta import prompt_receta
 
 def analizar_imagen_completa(imagen=None, tipo=None, nombre=None):
     identificacion = None
