@@ -21,9 +21,6 @@ class AnalizarImagenView(APIView):
 
         try:
             resultado = analizar_imagen_completa(imagen=imagen)
-            print("========== RESPUESTA IA ==========")
-            print(resultado)
-            print("==================================")
 
             return Response(resultado, status=status.HTTP_200_OK)
 
