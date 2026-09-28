@@ -64,7 +64,7 @@ Indicaciones:
 - "grupo": grupo mineralógico al que pertenece.
 - "dureza": dureza aproximada en la escala de Mohs.
 - "color": colores habituales.
-- "raya": color de la raya que deja al ser rayado sobre una superficie adecuada.
+- "raya": color de la raya que deja al ser rayado sobre un papel. Si no tiene raya, pon aqui ninguna.
 - "brillo": tipo de brillo característico.
 - "densidad": densidad aproximada cuando exista información fiable.
 - "formacion": procesos geológicos mediante los que se forma.
