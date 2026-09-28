@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+import traceback
 
 load_dotenv()
 
@@ -24,6 +25,10 @@ class AnalizarImagenView(APIView):
             return Response(resultado, status=status.HTTP_200_OK)
 
         except Exception as e:
+            print("========== ERROR EN ANALIZAR IMAGEN ==========")
+            traceback.print_exc()
+            print("==============================================")
+
             return Response(
                 {"error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
