@@ -24,11 +24,13 @@ No utilices Markdown.
 No añadas explicaciones antes o después del JSON.
 No añadas propiedades adicionales.
 No cambies los nombres de las propiedades.
+El campo tipo debe ser siempre receta.
 
 Formato obligatorio:
 
 {{
     "name": "Nombre de la receta",
+    "tipo": "receta",
     "numero_personas": 0,
     "ingredientes": [
         {{
