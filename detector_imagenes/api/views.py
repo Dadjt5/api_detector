@@ -47,7 +47,6 @@ class ObtenerInformacion(APIView):
 
         try:
             resultado = analizar_imagen_completa(nombre=nombre, tipo=tipo)
-            print(resultado)
             return Response(resultado, status=status.HTTP_200_OK)
 
         except Exception as e:
