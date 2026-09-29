@@ -22,6 +22,8 @@ Devuelve ÚNICAMENTE un objeto JSON válido.
 
 El campo tipo debe ser siempre receta.
 
+El campo categoria debe indicar el tipo de receta, puede ser de tres tipos: Dulce, Salada o Picante.
+
 IMPORTANTE:
 - Devuelve ÚNICAMENTE el objeto JSON.
 - NO escribas ninguna explicación antes del JSON.
@@ -34,6 +36,7 @@ Formato obligatorio:
 {{
     "name": "Nombre de la receta",
     "tipo": "receta",
+    "category": "Categoría",
     "numero_personas": 0,
     "ingredientes": [
         {{
