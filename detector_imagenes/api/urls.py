@@ -4,4 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path("analizar/", views.AnalizarImagenView.as_view(), name="analizar_imagen"),]
+    path("analizar/", views.AnalizarImagenView.as_view(), name="analizar_imagen"),
+    path("investigar/", views.ObtenerInformacion.as_view(), name="obtener_informacion"),
+]
