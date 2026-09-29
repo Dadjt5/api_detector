@@ -36,8 +36,8 @@ class AnalizarImagenView(APIView):
 
 class ObtenerInformacion(APIView):
     def post(self, request):
-        nombre = request.get("nombre")
-        tipo = request.get("tipo")
+        nombre = request.data.get("nombre")
+        tipo = request.data.get("tipo")
 
         if not nombre or not tipo:
             return Response(
