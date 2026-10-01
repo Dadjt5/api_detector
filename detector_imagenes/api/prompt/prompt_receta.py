@@ -20,7 +20,7 @@ indicado en "numero_personas".
 
 Devuelve ÚNICAMENTE un objeto JSON válido.
 
-El campo tipo debe ser siempre receta.
+El campo tipo debe ser siempre recetas.
 
 El campo categoria debe indicar el tipo de receta, puede ser de tres tipos: Dulce, Salada o Picante.
 
@@ -35,7 +35,7 @@ Formato obligatorio:
 
 {{
     "name": "Nombre de la receta",
-    "tipo": "receta",
+    "tipo": "recetas",
     "category": "Categoría",
     "numero_personas": 0,
     "ingredientes": [
