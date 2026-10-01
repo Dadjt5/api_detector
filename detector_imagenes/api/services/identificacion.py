@@ -12,16 +12,16 @@ def analizar_imagen_completa(imagen=None, tipo=None, nombre=None):
         identificacion = identificar_imagen(imagen, prompt_analisis)
         tipo = identificacion.get("tipo")
 
-    if tipo == "animal":
+    if tipo == "animales":
         informacion = analizar_animal(identificacion, nombre, 100)
 
-    elif tipo == "planta":
+    elif tipo == "plantas":
         informacion = analizar_planta(identificacion, nombre, 100)
 
-    elif tipo == "mineral":
+    elif tipo == "minerales":
         informacion = analizar_mineral(identificacion, nombre, 100)
     
-    elif tipo == "receta":
+    elif tipo == "recetas":
         informacion = analizar_receta(identificacion, nombre, 100)
 
     else:
