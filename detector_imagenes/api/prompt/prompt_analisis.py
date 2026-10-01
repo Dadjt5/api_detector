@@ -18,13 +18,13 @@ Determina qué aparece principalmente en la imagen.
 
 El campo "tipo" SOLO puede contener uno de estos valores:
 
-- animal
-- planta
-- mineral
-- receta
+- animales
+- plantas
+- minerales
+- recetas
 - otro
 
-Si el elemento no puede clasificarse claramente como animal, planta, mineral o receta, utiliza "otro".
+Si el elemento no puede clasificarse claramente como animales, plantas, minerales o recetas, utiliza "otro".
 
 No utilices otros valores para "tipo".
 
@@ -56,7 +56,8 @@ la especie exacta, utiliza:
 
 y no inventes una especie concreta.
 
-En el caso de los platos de comida basta con que pongas el nombre de la receta.
+En el caso de ver una o mas hojas puedes intentar identificar el árbol o plantas a la que pertenecen.
+En el caso de los platos de comida basta con que pongas el nombre de la recetas.
 
 ========================
 3. CONFIANZA
@@ -98,7 +99,7 @@ Debe existir evidencia visual suficiente para justificarla.
 4. REGLAS DE CONSISTENCIA
 ========================
 
-- "tipo" debe ser exactamente: animal, planta, mineral, receta u otro.
+- "tipo" debe ser exactamente: animales, plantas, minerales, recetas u otro.
 - "name" deben referirse al mismo elemento.
 - No inventes especies o nombres de recetas.
 - Si no puedes determinar un dato de forma fiable, utiliza "".
@@ -120,7 +121,7 @@ No cambies los nombres de las propiedades.
 Formato obligatorio:
 
 {
-  "tipo": "animal",
+  "tipo": "animales",
   "name": "Nombre común",
   "confidence": 0
 }
