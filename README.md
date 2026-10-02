@@ -12,7 +12,7 @@ Actualmente, la API se encuentra en fase de desarrollo y cuenta con la estructur
 
 La API se encuentra actualmente en una fase inicial de desarrollo. La estructura del proyecto y la conexión con la base de datos están preparadas, mientras que las funcionalidades y endpoints se irán implementando progresivamente.
 
-Ahora mismo solo esta pensada para el análisis de animales pero se busca que sea mas general.
+Ahora mismo solo esta pensada para el análisis de animales, plantas y minerales, pero se busca que sea mas general.
 
 ## Tecnologías
 
