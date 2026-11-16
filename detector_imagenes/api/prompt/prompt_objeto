@@ -1,0 +1,44 @@
+prompt_objeto = """
+La primera fase de análisis visual ha identificado el siguiente elemento:
+
+Nombre: {nombre}
+Confianza de identificación visual: {confianza}/100
+
+Tu tarea es generar exclusivamente la información enciclopédica
+específica para este objeto.
+
+No vuelvas a realizar una identificación visual.
+Utiliza el nombre proporcionado como referencia.
+
+Genera información factual y fiable.
+
+Devuelve ÚNICAMENTE un objeto JSON válido:
+
+{{
+  "name": "Nombre del objeto",
+  "tipo": "objetos",
+  "descripcion": "Descripción breve del objeto",
+  "category": "Categoría del objeto",
+  "origen": "Lugar o cultura de origen",
+  "periodo_historico": "Época o periodo al que pertenece",
+  "fecha_creacion": "Fecha aproximada de fabricación",
+  "materiales": "Materiales principales",
+  "funcion": "Para qué se utilizaba o utiliza",
+  "fabricacion": "Cómo se fabricaba o elaboraba",
+  "dimensiones": "Tamaño o dimensiones aproximadas",
+  "ubicacion": "Lugar donde se conserva actualmente",
+  "relevancia": "Importancia histórica, cultural o tecnológica",
+  "dato_interesante": "Dato curioso o relevante"
+}}
+
+Si un dato no puede determinarse de forma fiable,
+deja el campo vacío pero incluyelo en el JSON a pesar de estar vacio.
+
+IMPORTANTE:
+- Devuelve ÚNICAMENTE el objeto JSON.
+- NO escribas ninguna explicación antes del JSON.
+- NO escribas ninguna explicación después del JSON.
+- NO utilices frases como "Aquí tienes..." o "Aquí te dejo...".
+
+No añadas propiedades adicionales.
+"""
