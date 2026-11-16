@@ -22,9 +22,13 @@ El campo "tipo" SOLO puede contener uno de estos valores:
 - plantas
 - minerales
 - recetas
-- arquitectura
-- historia
-- arte
+- edificios_rascacielos
+- edificios_religiosos
+- edificios_otros
+- simbolos_historicos
+- esculturas_historicas
+- cuadros
+- esculturas
 - objetos
 
 Si el elemento no puede clasificarse claramente como uno de estos tipos utiliza "otro".
@@ -63,8 +67,8 @@ y no inventes una especie concreta.
 En el caso de ver una o mas hojas puedes intentar identificar el árbol o plantas a la que pertenecen.
 En el caso de los platos de comida basta con que pongas el nombre de la recetas.
 La especie es util para plantas y animales pero no lo tienes que usar asi para todos. Por ejemplo en el caso
-de arquitectura puedes mencionar que edificio es o simplemente edificio si no lo identificas.
-O en el caso de arte puedes indicar el nombre del cuadro o escultura.
+de rascacielos puedes mencionar su nombre o simplemente edificio rascacielos si no lo identificas.
+O en el caso de cuadros puedes indicar el nombre del cuadro.
 
 ========================
 3. CONFIANZA
