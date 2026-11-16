@@ -1,11 +1,11 @@
-prompt_edificio_rascacielos = """
+prompt_simbolo_historico = """
 La primera fase de análisis visual ha identificado el siguiente elemento:
 
 Nombre: {nombre}
 Confianza de identificación visual: {confianza}/100
 
 Tu tarea es generar exclusivamente la información enciclopédica
-específica para este rascacielos.
+específica para este simbolo historico.
 
 No vuelvas a realizar una identificación visual.
 Utiliza el nombre proporcionado como referencia.
