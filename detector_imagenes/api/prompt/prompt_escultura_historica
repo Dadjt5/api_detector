@@ -1,0 +1,43 @@
+prompt_edificio_rascacielos = """
+La primera fase de análisis visual ha identificado el siguiente elemento:
+
+Nombre: {nombre}
+Confianza de identificación visual: {confianza}/100
+
+Tu tarea es generar exclusivamente la información enciclopédica
+específica para este rascacielos.
+
+No vuelvas a realizar una identificación visual.
+Utiliza el nombre proporcionado como referencia.
+
+Genera información factual y fiable.
+
+Devuelve ÚNICAMENTE un objeto JSON válido:
+
+{{
+  "name": "Nombre de la escultura",
+  "tipo": "esculturas_historicas",
+  "descripcion": "Descripción breve de la obra",
+  "category": "Categoría escultórica",
+  "autor": "Escultor o autor",
+  "ano_creacion": "Año o periodo de creación",
+  "ubicacion": "Lugar donde se encuentra",
+  "civilizacion": "Civilización o cultura de origen",
+  "material": "Material utilizado",
+  "estilo_artistico": "Estilo artístico",
+  "contexto_historico": "Contexto histórico de creación",
+  "significado": "Significado o representación",
+  "dato_interesante": "Dato curioso o relevante"
+}}
+
+Si un dato no puede determinarse de forma fiable,
+deja el campo vacío pero incluyelo en el JSON a pesar de estar vacio.
+
+IMPORTANTE:
+- Devuelve ÚNICAMENTE el objeto JSON.
+- NO escribas ninguna explicación antes del JSON.
+- NO escribas ninguna explicación después del JSON.
+- NO utilices frases como "Aquí tienes..." o "Aquí te dejo...".
+
+No añadas propiedades adicionales.
+"""
